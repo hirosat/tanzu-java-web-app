@@ -2,6 +2,8 @@ SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='harbor.o1.hirotakas.link/tap/t
 LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
 NAMESPACE = os.getenv("NAMESPACE", default='default')
 
+allow_k8s_contexts('tap-admin@tap')
+
 k8s_custom_deploy(
     'tanzu-java-web-app',
     apply_cmd="tanzu apps workload apply -f config/workload.yaml --live-update" +
